@@ -105,7 +105,7 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse('postgres://testdb_3nya_user:UWtmfOI6pNdBD8Cl8ItYuxY273sQYYGw@dpg-ci84qomnqql0ld80dkng-a.oregon-postgres.render.com/testdb_3nya')
+    'default': dj_database_url.parse('postgres://testdb_3nya_user:UWtmfOI6pNdBD8Cl8ItYuxY273sQYYGw@dpg-ci84qomnqql0ld80dkng-a/testdb_3nya')
 }
 # DATABASES
 
