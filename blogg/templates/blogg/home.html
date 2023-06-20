@@ -5,7 +5,7 @@
  
     {% for post in pkpost %}
         <article class="media content-section">
-          <img class="rounded-circle article-img" src='https://as1.ftcdn.net/v2/jpg/05/53/79/60/1000_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg' alt="myi">
+          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" alt="myi">
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
