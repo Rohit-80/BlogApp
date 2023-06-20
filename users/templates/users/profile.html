@@ -3,7 +3,7 @@
 {% block content %}
     <div class="content-section">
       <div class="media">
-        <img class="rounded-circle account-img" src="https://as1.ftcdn.net/v2/jpg/05/53/79/60/1000_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
@@ -14,6 +14,8 @@
           <fieldset class="form-group">
               <legend class="border-bottom mb-4">Profile Info</legend>
               {{ u_form|crispy }}
+              {{ p_form|crispy }}
+              
               
           </fieldset>
           <div class="form-group">
