@@ -1,7 +1,7 @@
 {% extends "blogg/base.html" %}
 {% block content %}
   <article class="media content-section">
-    <img class="rounded-circle article-img" src='https://as1.ftcdn.net/v2/jpg/05/53/79/60/1000_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg'>
+    <img class="rounded-circle article-img" src="{{ Object.author.profile.image.url }}">
     <div class="media-body">
       <div class="article-metadata">
         <a class="mr-2" href="#">{{ object.author }}</a>
