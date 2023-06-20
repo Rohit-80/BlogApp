@@ -15,6 +15,7 @@ import os
 import environ
 env = environ.Env()
 import dj_database_url
+import cloudinary_storage
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,9 +39,9 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Application definition
 # Media settings
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 # MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # CLOUDINARY_STORAGE = {
 #     'CLOUD_NAME': 'ddlijrpjm',
 #     'API_KEY': '233734332344727',
@@ -63,8 +64,10 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    
+    'cloudinary',
     
 ]
 
@@ -183,4 +186,15 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER_GMAIL')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_USER_PASSWORD');
 
-# django_heroku.settings(locals())
+MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'ddlijrpjm',
+    'API_KEY': '233734332344727',
+    'API_SECRET': 'jQdRBqeIW2ym__zbPWQ_JLLdKyQ',
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'my-manifest-directory')
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
