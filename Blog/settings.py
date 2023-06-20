@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse('postgres://testdb_3nya_user:UWtmfOI6pNdBD8Cl8ItYuxY273sQYYGw@dpg-ci84qomnqql0ld80dkng-a/testdb_3nya')
+    'default': dj_database_url.parse(os.environ('DATABASE_URL'))
 }
 # DATABASES
 
@@ -169,7 +169,7 @@ EMAIL_PORT = 587
 # EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 # EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
-EMAIL_HOST_USER = 'shrirohitvishwakarma81@gmail.com'
-EMAIL_HOST_PASSWORD = 'psesataobjdnxwak'
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER_GMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_USER_PASSWORD');
 
 # django_heroku.settings(locals())
