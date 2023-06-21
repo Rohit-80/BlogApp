@@ -16,10 +16,13 @@ import environ
 env = environ.Env()
 import dj_database_url
 import cloudinary_storage
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
@@ -36,23 +39,6 @@ ALLOWED_HOSTS = ["*"]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-# Application definition
-# Media settings
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = BASE_DIR / 'media'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'ddlijrpjm',
-#     'API_KEY': '233734332344727',
-#     'API_SECRET': 'jQdRBqeIW2ym__zbPWQ_JLLdKyQ',
-#     'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'my-manifest-directory')
-# }
-# cloudinary.config( 
-#   cloud_name = "ddlijrpjm", 
-#   api_key = "233734332344727", 
-#   api_secret = "jQdRBqeIW2ym__zbPWQ_JLLdKyQ" 
-# )
 
 
 INSTALLED_APPS = [
@@ -66,9 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    
     'cloudinary',
-    
 ]
 
 MIDDLEWARE = [
@@ -109,7 +93,7 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
-# DATABASES
+
 
 
 # Password validation
@@ -135,14 +119,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -151,7 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_URL = '/static/'
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static',]
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
@@ -169,30 +150,24 @@ LOGIN_URL = 'login'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
-# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-# EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER_GMAIL')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_USER_PASSWORD');
 
 MEDIA_URL = '/media/'
-# MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'ddlijrpjm',
-    'API_KEY': '233734332344727',
-    'API_SECRET': 'jQdRBqeIW2ym__zbPWQ_JLLdKyQ',
+    'CLOUD_NAME': os.environ.get('MY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('MY_CLOUD_API_KEY'),
+    'API_SECRET': os.environ.get('MY_CLOUD_API_KEY_SECRET'),
     'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'my-manifest-directory')
 }
 
