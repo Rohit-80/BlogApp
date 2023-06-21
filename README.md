@@ -1,2 +1,2 @@
 # BlogApp
-Live at - https://my-blog-ic2t.onrender.com/
+Live at - https://djblog-g2dd.onrender.com/
