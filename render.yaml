@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: Blog
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn mysite.wsgi:application"
